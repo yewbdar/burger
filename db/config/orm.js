@@ -1,0 +1,31 @@
+var connection = require("./connection.js");
+
+var orm = {
+    selectAll: function (table) {
+        var quary = "SELECT * FROM ??";
+        connection.query(quary, [table], function (err, data) {
+            if (err) throw err;
+            console.log(data);
+        });
+    },
+
+    insertOne: function (table, colOne, colTwo, valueOne, valueTwo) {
+        var quary = "INSERT INTO ?? ( ?? , ?? ) VALUES (? , ? )";
+
+        connection.query(quary, [table,  colOne, colTwo, valueOne, valueTwo ], function (err, res) {
+            if (err) throw err;
+            console.log(res);
+        });
+    },
+    updateOne: function (table, colOne, colTwo, valueOne, valueTwo, whereCol, whereValu) {
+        var quary = "UPDATE ?? SET ?? = ? , ?? = ? WHERE ?? = ? ";
+        connection.query(table, colOne, valueOne, colTwo, valueTwo, whereCol, whereValu, function (err, res) {
+            if (err) throw err;
+            console.log(res);
+        });
+
+    }
+
+
+}
+module.exports=orm;
