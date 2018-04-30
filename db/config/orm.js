@@ -9,7 +9,7 @@ var orm = {
         });
     },
 
-    insertOne: function (table, colOne, colTwo, valueOne, valueTwo) {
+    insertOne: function (table, colOne, valueOne,colTwo, valueTwo) {
         var quary = "INSERT INTO ??  SET ?";
 
         connection.query(quary, [table, { colOne:valueOne, colTwo:valueTwo} ], function (err, res) {
@@ -17,7 +17,7 @@ var orm = {
             console.log(res);
         });
     },
-    updateOne: function (table, colOne, colTwo, valueOne, valueTwo, whereCol, whereValu) {
+    updateOne: function (table, colOne, valueOne,colTwo,  valueTwo, whereCol, whereValu) {
         var quary = "UPDATE ?? SET ? WHERE ? ";
         connection.query(quary,[table, {colOne:valueOne, colTwo:valueTwo},{ whereCol: whereValu}], function (err, res) {
             if (err) throw err;
