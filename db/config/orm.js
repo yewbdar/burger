@@ -10,16 +10,16 @@ var orm = {
     },
 
     insertOne: function (table, colOne, colTwo, valueOne, valueTwo) {
-        var quary = "INSERT INTO ?? ( ?? , ?? ) VALUES (? , ? )";
+        var quary = "INSERT INTO ??  SET ?";
 
-        connection.query(quary, [table,  colOne, colTwo, valueOne, valueTwo ], function (err, res) {
+        connection.query(quary, [table, { colOne:valueOne, colTwo:valueTwo} ], function (err, res) {
             if (err) throw err;
             console.log(res);
         });
     },
     updateOne: function (table, colOne, colTwo, valueOne, valueTwo, whereCol, whereValu) {
-        var quary = "UPDATE ?? SET ?? = ? , ?? = ? WHERE ?? = ? ";
-        connection.query(table, colOne, valueOne, colTwo, valueTwo, whereCol, whereValu, function (err, res) {
+        var quary = "UPDATE ?? SET ? WHERE ? ";
+        connection.query(quary,[table, {colOne:valueOne, colTwo:valueTwo},{ whereCol: whereValu}], function (err, res) {
             if (err) throw err;
             console.log(res);
         });
