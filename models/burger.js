@@ -1,6 +1,9 @@
 var orm=require("../db/config/orm.js");
 
-orm.selectAll("burgers_db");
+var burger={
+select:orm.selectAll("burgers_db"),
 
-orm.insertOne();
-orm.updateOne();
+insert:orm.insertOne(),
+update:orm.updateOne()
+}
+module.exports=burger;

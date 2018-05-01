@@ -6,6 +6,7 @@ var orm = {
         connection.query(quary, [table], function (err, data) {
             if (err) throw err;
             console.log(data);
+   
         });
     },
 
