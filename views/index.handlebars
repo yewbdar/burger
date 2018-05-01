@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Burger</title>
 </head>
-<body>
-    <textarea>
 
-    </textarea>
-    <button id="submit" type="submit"> Submit</button>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>Burger To Eat</h1>
+
+                <ul>
+                    {{#each Burgers}}
+                    <li>
+                        <p>
+                            {{this.id}}. {{this.Burger}}
+
+                            <button data-Burgerid="{{this.id}}" class="delBurger">Delete</button>
+                        </p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <h1>devoured Burger </h1>
+
+                <ul>
+                    {{#each devoBurgers}}
+                    <li>
+                        <p>
+                            {{this.id}}. {{this.Burger}}
+                        </p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <h2>Add a Burger </h2>
+                <form id="addBurger" class="button-size">
+                    <textarea type="text" name="burger"></textarea>
+                    <button type="submit">Save Burger!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
