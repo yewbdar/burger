@@ -10,7 +10,7 @@ var burger = {
         orm.insertOne('burgers', 'burger_name', 'devoured',burgerName, false);
     },
     updateOne: function (id) {
-        orm.updateOne('burgers','id', id, 'devoured', true);
+        orm.updateOne('burgers','devoured', true,'id', id, );
     }
 
 }

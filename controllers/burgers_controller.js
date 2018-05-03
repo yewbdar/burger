@@ -9,23 +9,20 @@ router.get("/",function(req,res){
         res.render("index",{burger:data})
         
     });
-    // burger.selectAll("burgers" , function(err,data){
-    //     console.log(data);
-    // });
-    // res.render("index",{burger:data})
-    
-});
-
 router.post("/burgers",function(req,res){
-    console.log("am hare in rout controller POST ");
+    // console.log("am hare in rout controller POST ");
 
-    console.log(req.body.burger.burger_name);
-    
+    // console.log(req.body.burger.burger_name);
   burger.insertOne(req.body.burger.burger_name);
-//  res.redirect('/');
+    res.redirect('/');
  });
  
- router.put("/",function(req,res){
+ router.put("/burgers/:id", function (req, res) {
+
+    burger.updateOne(req.params.id)
+    
+        res.redirect('/');
+});
 
 });
 module.exports=router;
