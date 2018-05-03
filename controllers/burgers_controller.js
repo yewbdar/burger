@@ -18,10 +18,9 @@ router.post("/burgers",function(req,res){
  });
  
  router.put("/burgers/:id", function (req, res) {
-
-    burger.updateOne(req.params.id)
+     burger.updateOne(req.params.id)
     
-        res.redirect('/');
+        //res.redirect('/');
 });
 
 });
