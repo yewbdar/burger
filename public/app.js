@@ -1,37 +1,35 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    $("#submit").on("click",function(event){
+    $("#submit").on("click", function (event) {
         event.preventDefault();
         var newBurger = {
             burger_name: $("#addBurger [name=burgers]").val(),
         };
-        if (newBurger.burger_name === "")
-        {
-            alert("Please enter burger name");
+        if (newBurger.burger_name === "") {
+            alert("Please insert burger name");
         }
-        else
-        {
+        else {
             console.log(newBurger);
             $.ajax("/burgers", {
                 type: "POST",
-                data: {burger : newBurger}
+                data: { burger: newBurger }
             })
-            .then(function () {
-                console.log("Added new burger");
-                location.reload();
-            })
-            
+                .then(function () {
+                    console.log("Added new burger");
+                    location.reload();
+                })
+
         }
     });
-      
-    $(".devoBurger").on("click", function(event) {
+
+    $(".devoBurger").on("click", function (event) {
         var id = $(this).data("burgerid");
         $.ajax("/burgers/" + id, {
-          type: "PUT"
+            type: "PUT"
         }).then(
-          function() {
-            console.log("Updated id ", id);
-          });
-          location.reload();
-      });
-    })
+            function () {
+                console.log("Updated id ", id);
+            });
+        location.reload();
+    });
+})
