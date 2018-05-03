@@ -1,32 +1,33 @@
 var connection = require("./connection.js");
 
 var orm = {
-    selectAll: function (table) {
+
+    selectAll: function (table,callback) {
         var quary = "SELECT * FROM ??";
-        connection.query(quary, [table], function (err, data) {
-            if (err) throw err;
-            console.log(data);
-   
+        connection.query(quary,[table],function (err, data) {
+            if (err) {
+                callback(err,null);
+            }
+            callback(null,data);
         });
+       
+        
     },
+    insertOne: function (table, col1,col2, val1, val2) {
+            console.log("------------->",table, col1, val1,col2, val2);
 
-    insertOne: function (table, colOne, valueOne,colTwo, valueTwo) {
-        var quary = "INSERT INTO ??  SET ?";
+             let query = "INSERT INTO ?? (??, ??) VALUES (?, ?)";
+             connection.query(query, [table,col1, col2,val1, val2], function(err) {
+                if (err) throw err;
+             });
+        },
 
-        connection.query(quary, [table, { colOne:valueOne, colTwo:valueTwo} ], function (err, res) {
-            if (err) throw err;
-            console.log(res);
-        });
-    },
-    updateOne: function (table, colOne, valueOne,colTwo,  valueTwo, whereCol, whereValu) {
-        var quary = "UPDATE ?? SET ? WHERE ? ";
-        connection.query(quary,[table, {colOne:valueOne, colTwo:valueTwo},{ whereCol: whereValu}], function (err, res) {
-            if (err) throw err;
-            console.log(res);
-        });
 
+        updateOne: function(table, col1, val1, col2, val2){
+            let query = `UPDATE ?? SET ?? = ? WHERE ?? = ?`;
+            connection.query(query, [table, col1, val1, col2, val2],function(err){
+                if (err) throw err;
+            });
+        }
     }
-
-
-}
 module.exports=orm;

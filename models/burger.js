@@ -1,9 +1,17 @@
-var orm=require("../db/config/orm.js");
+var orm = require("../db/config/orm.js");
 
-var burger={
-select:orm.selectAll("burgers_db"),
+var burger = {
+    selectAll: function (callback) {
+        orm.selectAll("burgers", function(err,data){
+            callback(err,data);
+        }) ;
+    },
+    insertOne: function (burgerName) {
+        orm.insertOne('burgers', 'burger_name', 'devoured',burgerName, false);
+    },
+    updateOne: function (id) {
+        orm.updateOne('burgers','id', id, 'devoured', true);
+    }
 
-insert:orm.insertOne(),
-update:orm.updateOne()
 }
-module.exports=burger;
+module.exports = burger;
