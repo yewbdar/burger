@@ -1,3 +1,4 @@
+console.log('WE ARE HERE');
 var connection = require("./connection.js");
 
 var orm = {
