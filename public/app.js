@@ -22,7 +22,6 @@ $(document).ready(function () {
                     console.log("Added new burger");
                     location.reload();
                 })
-
         }
     });
 
