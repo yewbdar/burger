@@ -2,13 +2,17 @@ $(document).ready(function () {
 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-        var newBurger = {
-            burger_name: $("#addBurger [name=burgers]").val(),
-        };
-        if (newBurger.burger_name === "") {
+
+        if ($("#addBurger [name=burgers]").val() === "") {
+
             alert("Please insert burger name");
+            return;
         }
         else {
+            var newBurger = {
+                burger_name: $("#addBurger [name=burgers]").val().trim(),
+            };
+
             console.log(newBurger);
             $.ajax("/burgers", {
                 type: "POST",
