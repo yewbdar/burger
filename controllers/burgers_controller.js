@@ -7,8 +7,8 @@ router.get("/", function (req, res) {
 
     });
     router.post("/burgers", function (req, res) {
-
-        burger.insertOne(req.body.burger.burger_name);
+        burger.insertOne(req.body.burgers)
+        console.log(req.body.burgers);
         res.redirect('/');
     });
 

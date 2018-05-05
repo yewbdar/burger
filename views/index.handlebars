@@ -22,8 +22,8 @@
         <div class="col-lg-4 mt-5">
 
             <h2>Add a Burger </h2>
-            <form id="addBurger" class="button-size">
-                <textarea type="text" name="burgers"></textarea>
+            <form id="addBurger" class="button-size" method="POST"  action="/burgers">
+                <textarea type="text" name="burgers" required></textarea>
                 </br>
                 <button class="btn btn-primary" id="submit" type="submit">Save Burger!</button>
             </form>
