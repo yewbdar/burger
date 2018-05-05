@@ -6,6 +6,12 @@ router.get("/", function (req, res) {
         res.render("index", { burger: data })
 
     });
+    router.get("/burgers", function (req, res) {
+        burger.selectAll(function (err, data) {
+
+            res.json(data);
+        });
+    });
     router.post("/burgers", function (req, res) {
         burger.insertOne(req.body.burgers)
         console.log(req.body.burgers);
